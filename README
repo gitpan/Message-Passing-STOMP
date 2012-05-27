@@ -1,0 +1,34 @@
+NAME
+    Message::Passing::STOMP - input and output messages to STOMP.
+
+SYNOPSIS
+        # Terminal 1:
+        $ logstash --input STDIN --output STOMP --output_options '{"FIXME"}'
+        {"data":{"some":"data"},"@metadata":"value"}
+
+        # Terminal 2:
+        $ logstash --output STDOUT --input STOMP --input_options '{"FIXME"}'
+        {"data":{"some":"data"},"@metadata":"value"}
+
+DESCRIPTION
+    A AnyEvent::STOMP transport for Message::Passing.
+
+SEE ALSO
+    Message::Passing::Output::STOMP
+    Message::Passing::Input::STOMP
+    Message::Passing
+    AnyEvent::STOMP
+
+AUTHOR
+    Tomas (t0m) Doran <bobtfish@bobtfish.net>
+
+COPYRIGHT
+    Copyright The above mentioned AUTHOR 2012.
+
+LICENSE
+    GNU Affero General Public License, Version 3
+
+    If you feel this is too restrictive to be able to use this software,
+    please talk to us as we'd be willing to consider re-licensing under less
+    restrictive terms.
+
