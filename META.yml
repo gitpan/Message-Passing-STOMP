@@ -32,5 +32,5 @@ requires:
   namespace::autoclean: 0
 resources:
   repository: git://github.com/suretec/Message-Passing-STOMP.git
-version: 0.001_01
+version: 0.002
 x_authority: GHENRY
