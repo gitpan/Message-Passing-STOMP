@@ -20,10 +20,9 @@ sub connected {
 sub consume {
     my $self = shift;
     my $data = shift;
-    my $bytes = $self->encode($data);
     my $destination = $self->destination;
     my $headers = undef;
-    $self->connection_manager->connection->send($bytes, $destination, $headers);
+    $self->connection_manager->connection->send($data, $destination, $headers);
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -72,7 +71,7 @@ Sends a message.
 =head1 SPONSORSHIP
 
 This module exists due to the wonderful people at Suretec Systems Ltd.
-<http://www.suretecsystems.com/> who sponsored it's development for its
+<http://www.suretecsystems.com/> who sponsored its development for its
 VoIP division called SureVoIP <http://www.surevoip.co.uk/> for use with
 the SureVoIP API - 
 <http://www.surevoip.co.uk/support/wiki/api_documentation>
