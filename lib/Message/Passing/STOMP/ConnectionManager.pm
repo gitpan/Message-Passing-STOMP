@@ -4,10 +4,11 @@ use Scalar::Util qw/ weaken /;
 use AnyEvent;
 use AnyEvent::STOMP;
 use Carp qw/ croak /;
+use Try::Tiny qw/ try /;
 use namespace::autoclean;
 
 BEGIN { # For RabbitMQ https://rt.cpan.org/Ticket/Display.html?id=68432
-    if ($AnyEvent::STOMP::VERSION <= 0.6) {
+    if (!try{ AnyEvent::STOMP->VERSION("0.6") }) {
         no warnings 'redefine';
         sub AnyEvent::STOMP::send_frame {
             my $self = shift;
@@ -27,19 +28,12 @@ BEGIN { # For RabbitMQ https://rt.cpan.org/Ticket/Display.html?id=68432
     }
 }
 
-with 'Message::Passing::Role::ConnectionManager';
+with qw/
+    Message::Passing::Role::ConnectionManager
+    Message::Passing::Role::HasHostnameAndPort
+/;
 
-has hostname => (
-    is => 'ro',
-    isa => 'Str',
-    default => 'localhost',
-);
-
-has port => (
-    is => 'ro',
-    isa => 'Int',
-    default => 6163,
-);
+sub _default_port { 6163 }
 
 has ssl => (
     is => 'ro',

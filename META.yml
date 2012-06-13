@@ -23,12 +23,12 @@ no_index:
 requires:
   AnyEvent: 0
   AnyEvent::STOMP: 0.6
-  Message::Passing: 0.006
+  Message::Passing: 0.009
   Moose: 0
   Task::Weaken: 0
   Try::Tiny: 0
   namespace::autoclean: 0
 resources:
   repository: git://github.com/suretec/Message-Passing-STOMP.git
-version: 0.005
+version: 0.006
 x_authority: GHENRY
